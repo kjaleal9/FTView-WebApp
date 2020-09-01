@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Screen Generator</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/App.css" />
+</head>
+
+<body>
+
+    {{>navbar}}
+
+    <section class='landing'>
+        <div class='dark-overlay'>
+            <div class='landing-inner'>
+                <h1 class="text-center">Screen Generator</h1>
+                <form method="POST" action="/screenGenerator" enctype="multipart/form-data">
+                    <div>
+                        <label class="custom-file-upload btn btn-light">
+                            <input id="file-upload" name="fileUpload" type="file" multiple />
+                            Choose Files
+                        </label>
+                        <span id="file-selected"></span>
+                        <div>
+                            <input id="submit-button" class="btn btn-primary my-1" type="submit"
+                                name="btn_upload_multiple_images" value="Upload" />
+                        </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="/js/app.js"></script>
+</body>
+
+</html>
