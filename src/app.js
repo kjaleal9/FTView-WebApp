@@ -6,7 +6,6 @@ const exToJson = require('convert-excel-to-json');
 const xml2js = require('xml2js');
 const util = require('util');
 const d3 = require('d3');
-const multer = require('multer');
 
 // Require User Modules
 const {

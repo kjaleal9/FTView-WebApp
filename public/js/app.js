@@ -9,10 +9,4 @@ $('#file-upload').bind('change', function () {
     var fileName = '';
     fileName = $(this).val();
     $('#file-selected').html(`${fileName}`);
-    console.log(fileText.innerHTML.length > 0);
-    if (fileText.innerHTML.length > 0) {
-        submitButton.style.display = '';
-    } else if ((fileText.innerHTML.length = 0)) {
-        submitButton.style.display = 'none';
-    }
 });
