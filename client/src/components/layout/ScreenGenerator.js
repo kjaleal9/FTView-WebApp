@@ -1,31 +1,53 @@
-import React, { useState } from 'react';
+import React from 'react';
+import axios from 'axios';
+import { setAlert } from '../../actions/alert';
+import { connect } from 'react-redux';
 
-const onSubmit = e => {
-    e.preventDefault();
-    var fileInput = document.querySelector('#file-upload');
-    var files = fileInput.files;
+const ScreenGenerator = ({ setAlert }) => {
+    const api = axios.create({
+        baseURL: '/api',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
 
-    console.log(files[0]);
-};
+    const onSubmit = async e => {
+        e.preventDefault();
+        var formData = new FormData();
+        var fileInput = document.querySelector('#file-upload');
+        var files = fileInput.files;
+        console.log(files[0]);
+        formData.append('upload', files[0]);
 
-const onChange = e => {
-    // love the query selector
-    var fileInput = document.querySelector('#file-upload');
-    var files = fileInput.files;
-    // cache files.length
-    var fl = files.length;
-    var i = 0;
+        const res = await api.post('/screenGenerator', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        });
+        setAlert(files[0].name, 'success');
+    };
 
-    while (i < fl) {
-        // localize file var in the loop
-        var file = files[i];
-        alert(file.name);
-        i++;
-    }
-    console.log(e.target.files);
-};
+    const onChange = e => {
+        // love the query selector
+        var fileInput = document.querySelector('#file-upload');
+        var files = fileInput.files;
+        // cache files.length
+        var fl = files.length;
+        var i = 0;
 
-const ScreenGenerator = () => {
+        while (i < fl) {
+            // localize file var in the loop
+            var file = files[i];
+            alert(file.name);
+            i++;
+        }
+        console.log(e.target.files);
+    };
+
+    const onClick = e => {
+        console.log(e.target);
+        setAlert('test', 'danger');
+    };
     return (
         <section className='landing'>
             <div className='dark-overlay'>
@@ -53,6 +75,11 @@ const ScreenGenerator = () => {
                                 value='Upload'
                             />
                         </div>
+                        <div
+                            id='button-test'
+                            className=' btn btn-primary'
+                            onClick={onClick}
+                        ></div>
                     </form>
                 </div>
             </div>
@@ -60,4 +87,4 @@ const ScreenGenerator = () => {
     );
 };
 
-export default ScreenGenerator;
+export default connect(null, { setAlert })(ScreenGenerator);

@@ -166,6 +166,10 @@ img {
     padding: 0.8rem;
     margin: 1rem 0;
     opacity: 0.9;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 100px;
     background: var(--light-color);
     color: #333;
 }
@@ -323,7 +327,7 @@ button {
     align-items: center;
     padding: 0.7rem 2rem;
     position: fixed;
-    z-index: 1;
+    z-index: 100;
     width: 100%;
     top: 0;
     border-bottom: solid 1px var(--primary-color);
